@@ -1,0 +1,28 @@
+# Byte-compiled / optimized Python files
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+env/
+*.env
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+db.sqlite3
+
+# Static files directory (if managed outside Django's collectstatic)
+/static/
+
+# Media files directory (user-uploaded content)
+/media/
+
+# Compiled Python bytecode
+*.pyo
+
+# macOS specific files
+.DS_Store
