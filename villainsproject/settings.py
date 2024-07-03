@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import dj_database_url
 
 from pathlib import Path
 
@@ -77,27 +76,30 @@ WSGI_APPLICATION = 'villainsproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Change the DB settings to the following to connect to connect to PostgreSQL
+import dj_database_url
+
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'villains',
-        'USER': 'postgres',
-        'PASSWORD': '1234', # Whatever you set it to during the setup
-        'HOST': '::1',
-        'PORT': '5432', # Most likely 5432
-    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'villains',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '1234', # Whatever you set it to during the setup
+    #     'HOST': '::1',
+    #     'PORT': '5432', # Most likely 5432
+    # },
+
+    'default': dj_database_url.parse(env('DATABASE_URL'))
     
-    'remotedata' : {                                    # conveniently, postgres on supabase as well
-        'ENGINE' : 'django.db.backends.postgresql',
-        'NAME' : 'villains',
-        'HOST' :'dpg-cq26jbjv2p9s73enjen0-a',
-        'PASSWORD': 'hPaxu2wP58P0BgMlpPesyLat0ULlE3tO',
-        'PORT': '5432',
-        'USER': 'user1',
-     #   'CERT' : 'config.prod-ca-2021.crt',             # download this from database/settings and put in your main app folder
-    }
+    # 'remotedata' : {                                  
+             
+    # }
 }
-#postgresql://user1:hPaxu2wP58P0BgMlpPesyLat0ULlE3tO@dpg-cq26jbjv2p9s73enjen0-a.oregon-postgres.render.com/villains
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
