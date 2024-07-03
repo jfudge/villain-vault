@@ -4,7 +4,7 @@ services:
     env: python
     plan: free
     buildCommand: "pip install -r requirements.txt && ./run-migrations.sh"
-    startCommand: "gunicorn villainsproject.wsgi.application:application --bind 0.0.0.0:10000"
+    startCommand: "gunicorn villainsproject.wsgi:application"
     envVars:
       - key: DJANGO_SECRET_KEY
         fromDatabase:
