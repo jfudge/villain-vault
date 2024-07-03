@@ -23,6 +23,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'villains',
     'users.apps.UsersConfig',
     'villains.apps.VillainsConfig',
     'marvels.apps.MarvelsConfig',
