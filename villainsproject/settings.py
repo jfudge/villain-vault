@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'villainsproject.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Change the DB settings to the following to connect to connect to PostgreSQL
+import os
 import dj_database_url
 
 import environ
@@ -83,7 +84,9 @@ import environ
 env = environ.Env()
 environ.Env.read_env()
 
-DATABASES = {
+SECRET_KEY = os.getenv('SECRET_KEY', '')
+
+#DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': 'villains',
@@ -92,14 +95,15 @@ DATABASES = {
     #     'HOST': '::1',
     #     'PORT': '5432', # Most likely 5432
     # },
-
-    'default': dj_database_url.parse(env('DATABASE_URL'))
-    
+ 
     # 'remotedata' : {                                  
              
     # }
+#}
+DATABASES = {
+    'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
 }
-
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
