@@ -1,15 +1,22 @@
+databases:
+  - name: villains
+    plan: free
+    databaseName: villains
+    user: postgres
+
 services:
   - type: web
-    name: villain-vault
-    env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt && ./run-migrations.sh"
-    startCommand: "gunicorn villainsproject.wsgi:application"
+    name: villain-vault
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "python -m gunicorn villainsproject.asgi:application -k uvicorn.workers.UvicornWorker"
     envVars:
-      - key: DJANGO_SECRET_KEY
+      - key: DATABASE_URL
         fromDatabase:
           name: villains
           property: connectionString
-databases:
-  - name: villains
-    engine: postgres
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
