@@ -7,7 +7,7 @@ colorama==0.4.6
 dataclasses==0.6
 deprecation==2.1.0
 distlib==0.3.8
-dj-database-url==2.2.0
+dj-database-url==0.5.0
 Django==3.2.5
 django-environ==0.11.2
 filelock==3.14.0
@@ -23,7 +23,7 @@ pillow==10.3.0
 platformdirs==4.2.2
 pluggy==1.5.0
 postgrest==0.16.8
-psycopg2==2.9.1
+psycopg2==2.9.9
 psycopg2-binary==2.9.9
 py==1.11.0
 pydantic==2.8.0
@@ -39,7 +39,7 @@ storage3==0.7.6
 StrEnum==0.4.15
 supafunc==0.4.6
 toml==0.10.2
-typing-extensions>=3.10.0.0,!=4.6.1
+typing_extensions==4.12.2
 tzdata==2024.1
 urllib3==1.26.19
 virtualenv==20.26.2
